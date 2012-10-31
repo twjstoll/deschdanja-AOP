@@ -1,6 +1,6 @@
 <?php
-namespace deschdanja\TS\AOP\Designators;
-use \deschdanja\TS\AOP\IJoinPoint;
+namespace deschdanja\AOP\Designators;
+use deschdanja\AOP\IJoinPoint;
 
 /**
  * Description of MethodName

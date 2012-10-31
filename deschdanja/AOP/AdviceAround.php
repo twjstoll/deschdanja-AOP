@@ -2,9 +2,11 @@
 namespace deschdanja\AOP;
 use deschdanja\AOP\Exceptions\InvalidArgument;
 /**
- * Description of AdviceAround
+ * An AdviceAround will be called prior to
+ * AdviceNonAround (before and after)
+ * and is able to prevent any further advices and the target to be called!
  *
- * @author Theodor
+ * @author Theodor Stoll
  */
 class AdviceAround extends AAdvice{
     protected $type = "around";

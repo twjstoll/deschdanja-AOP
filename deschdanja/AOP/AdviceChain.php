@@ -3,24 +3,57 @@ namespace deschdanja\AOP;
 use deschdanja\AOP\Exceptions\InvalidArgument;
 use deschdanja\AOP\Exceptions\OperationNotAllowed;
 /**
- * Description of AdviceChain
+ * AdviceChain holds all different IAspects
+ * and can run them against a IJoinpoint
  *
- * @author Theodor
+ * @author Theodor Stoll
  */
 class AdviceChain implements IAdviceChain{
+    /**
+     * @var array containing IAspect 
+     */
     protected $chain = array();
+    
+    /**
+     * position of chain when executing
+     * @var integer 
+     */
     protected $position = -1;
+    
+    /**
+     * @var IJoinPoint 
+     */
     protected $joinpoint = NULL;
 
+    /**
+     * Array with all around aspects
+     * @var array 
+     */
     protected $around = array();
+    
+    /**
+     * Array with all before aspects
+     * @var array 
+     */
     protected $before = array();
+    
+    /**
+     * Array with all after aspects
+     * @var array 
+     */
     protected $after = array();
 
+    /**
+     * indicates whether chain is executing
+     * @var boolean
+     */
     protected $isExecuting = false;
 
     /**
      * add aspect to chain
+     * $aspect->getType() must equal to 'around', 'before' or 'after'
      * @param IAspect $aspect
+     * @throw InvalidArgument if type of Aspect not supported
      */
     public function addAspect(IAspect $aspect){
         $type = $aspect->getType();
@@ -33,6 +66,7 @@ class AdviceChain implements IAdviceChain{
     /**
      * start execuction of chain
      * @param IJoinPoint $joinpoint
+     * @throws OperationNotAllowed if chain is already executing
      */
     public function executeChain(IJoinPoint $joinpoint){
         if($this->isExecuting){
@@ -56,7 +90,7 @@ class AdviceChain implements IAdviceChain{
     }
 
     /**
-     * returns number added Aspects
+     * returns number of added Aspects
      * @return int
      */
     public function getNumberOfAspects(){
@@ -66,6 +100,7 @@ class AdviceChain implements IAdviceChain{
 
     /**
      * proceeds to next item in chain and runs aspect
+     * @throws OperationNotAllowed if chain is not executing
      */
     public function proceed(){
         if(!$this->isExecuting){
@@ -81,6 +116,7 @@ class AdviceChain implements IAdviceChain{
     /**
      * removes all aspects from adviceChain
      * only possible when not executing chain
+     * @throws OperationNotAllowed when chain is executing
      */
     public function reset(){
         if($this->isExecuting){

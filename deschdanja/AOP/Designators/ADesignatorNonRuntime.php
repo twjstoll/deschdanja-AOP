@@ -1,15 +1,17 @@
 <?php
-namespace deschdanja\TS\AOP\Designators;
-use \deschdanja\TS\AOP\IJoinPoint;
-use deschdanja\TS\AOP\Exceptions\OperationUnsupported;
+namespace deschdanja\AOP\Designators;
+use deschdanja\AOP\IJoinPoint;
+use deschdanja\AOP\APointcutDesignator;
+
+use deschdanja\AOP\Exceptions\OperationUnsupported;
 
 /**
- * Description of ADesignatorNonRuntime
+ * Abstract NonRuntime Designator
+ * Used for all designators able to match without any runtime variables
  *
- * @author Theodor
+ * @author Theodor Stoll
  */
-abstract class ADesignatorNonRuntime implements \deschdanja\TS\AOP\IPointcutDesignator{
-    protected $expression = "";
+abstract class ADesignatorNonRuntime extends APointcutDesignator{
 
     public function __construct($expression){
         $this->setPointcutExpression($expression);

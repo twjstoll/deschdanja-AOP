@@ -1,6 +1,6 @@
 <?php
-namespace deschdanja\TS\AOP\Designators;
-use \deschdanja\TS\AOP\IJoinPoint;
+namespace deschdanja\AOP\Designators;
+use deschdanja\AOP\IJoinPoint;
 
 /**
  * Description of InterfaceName
@@ -9,7 +9,7 @@ use \deschdanja\TS\AOP\IJoinPoint;
  */
 class InterfaceName extends ADesignatorNonRuntime{
     /**
-     * returns whether aop-object matches class
+     * returns whether aop-object matches interface
      *
      * @param string $classname fully qualified classname
      * @return bool

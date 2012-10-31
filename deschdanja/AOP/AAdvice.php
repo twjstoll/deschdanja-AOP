@@ -2,7 +2,8 @@
 namespace deschdanja\AOP;
 use deschdanja\AOP\Exceptions\OperationUnsupported;
 /**
- * Description of AAdvice
+ * Abstract Advice Class
+ * Can be used as base for different advice types
  *
  * @author Theodor
  */

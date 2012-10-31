@@ -2,13 +2,13 @@
 namespace deschdanja\AOP;
 
 /**
- *
- * @author Theodor
+ * Interface for an Aspect
+ * @author Theodor Stoll
  */
-interface IApectBase {
+interface IAspectBase {
     /**
      * function may check matching with joinpoint
-     * can execute Behaviour (like in advice or aop target)
+     * can execute behaviour (like in advice or aop target)
      * @param IJoinPoint $joinpoint
      * @param IAdviceChain $adviceChain
      */

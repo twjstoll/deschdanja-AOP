@@ -1,6 +1,6 @@
 <?php
-namespace deschdanja\TS\AOP\Designators;
-use \deschdanja\TS\AOP\IJoinPoint;
+namespace deschdanja\AOP\Designators;
+use \deschdanja\AOP\IJoinPoint;
 
 /**
  * Description of ClassName
@@ -9,7 +9,7 @@ use \deschdanja\TS\AOP\IJoinPoint;
  */
 class ClassName extends ADesignatorNonRuntime{
     /**
-     * returns wheter aop-object matches classname
+     * returns whehter aop-object matches classname
      * 
      * @param string $classname fully qualified classname
      * @return bool
@@ -18,7 +18,6 @@ class ClassName extends ADesignatorNonRuntime{
         if(\preg_match($this->expression, $classname) == 1){
             return true;
         }
-        echo "<br>$classname does not match $this->expression";
         return false;
     }
 

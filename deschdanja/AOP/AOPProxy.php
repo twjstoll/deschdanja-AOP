@@ -11,12 +11,12 @@ use deschdanja\AOP\Exceptions\InvalidArgument;
  */
 class AOPProxy implements IAOPProxy {
 
-    protected $ClassnameJoinPoint = '\\deschdanja\\TS\\AOP\\JoinPoint';
+    protected $ClassnameJoinPoint = '\\deschdanja\\AOP\\JoinPoint';
     /**
      *
      * @var deschdanja\TS\AOP\IAdviceChain
      */
-    protected $AdviceChain = '\\deschdanja\\TS\\AOP\\AdviceChain';
+    protected $AdviceChain = '\\deschdanja\\AOP\\AdviceChain';
     /**
      *
      * @var object
@@ -99,7 +99,7 @@ class AOPProxy implements IAOPProxy {
     public function setJoinPointClassnameOfAOPProxy($joinpoint){
         if(\is_string($joinpoint)){
             $reflector = new \ReflectionClass($joinpoint);
-            if($reflector->implementsInterface('\\deschdanja\\TS\\AOP\\IJoinPoint')){
+            if($reflector->implementsInterface('\\deschdanja\\AOP\\IJoinPoint')){
                 $this->ClassnameJoinPoint = $joinpoint;
                 return;
             }

@@ -2,8 +2,8 @@
 namespace deschdanja\AOP;
 
 /**
- *
- * @author Theodor
+ * 
+ * @author Theodor Stoll
  */
 interface IAdviceChain {
     /**

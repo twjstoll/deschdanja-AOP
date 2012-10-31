@@ -2,15 +2,20 @@
 namespace deschdanja\AOP;
 use deschdanja\AOP\Exceptions\OperationUnsupported;
 
-//use \TS_Exceptions_OperationUnsupported as TS_Exceptions_OperationUnsupported;
-
 /**
  * Description of APointcutDesignator
  *
- * @author Theodor
+ * @author Theodor Stoll
  */
 abstract class APointcutDesignator implements IPointcutDesignator{
+    /**
+     * @var string 
+     */
     protected $expression = "";
+    
+    /**
+     * @var boolean 
+     */
     protected $runtimeDesignator = false;
 
 
@@ -26,15 +31,17 @@ abstract class APointcutDesignator implements IPointcutDesignator{
     /**
      * matches designator against class
      * this is only possible for non runtime designators!
-     * runtime designator will throw deschdanja\TS\AOP\Exceptions\OperationUnsupported
+     * runtime designator will throw OperationUnsupported
      *
      * @param string $classname fully qualified classname
      * @return bool
+     * @throws OperationUnsupported if runtime designator
      */
-    abstract public function matchClassname($classname){
+    public function matchClassname($classname){
         if($this->runtimeDesignator){
             throw new OperationUnsupported("designator uses Runtime elements and can therefore not match against Classname");
         }
+        return false;
     }
 
     /**

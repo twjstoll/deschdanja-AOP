@@ -3,7 +3,9 @@ namespace deschdanja\AOP;
 use deschdanja\AOP\Exceptions\InvalidArgument;
 
 /**
- * Description of AdviceNonAround
+ * AdviceNonAround can be either of type before or type after
+ * it is able to do all kinds of stuff,
+ * but is not able to prevent further proceding
  *
  * @author Theodor
  */

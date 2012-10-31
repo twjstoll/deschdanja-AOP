@@ -1,15 +1,15 @@
 <?php
-namespace deschdanja\TS\AOP\Designators;
-use deschdanja\TS\AOP\IJoinPoint;
-use deschdanja\TS\AOP\Exceptions\OperationUnsupported;
+namespace deschdanja\AOP\Designators;
+use deschdanja\AOP\IJoinPoint;
+use deschdanja\AOP\APointcutDesignator;
+use deschdanja\AOP\Exceptions\OperationUnsupported;
 
 /**
  * Abstract Class for a Runtime designator
  *
  * @author Theodor
  */
-class ADesignatorRuntime implements \deschdanja\TS\AOP\IPointcutDesignator{
-    protected $expression = "";
+abstract class ADesignatorRuntime extends APointcutDesignator{
 
     public function  __construct($expression) {
         $this->setPointcutExpression($expression);
@@ -28,7 +28,7 @@ class ADesignatorRuntime implements \deschdanja\TS\AOP\IPointcutDesignator{
     }
 
     /**
-     * matches aop-class against joinpoint
+     * matches aop-class (target) against joinpoint
      * @param IJoinPoint $joinpoint
      * @return bool;
      */
@@ -41,7 +41,7 @@ class ADesignatorRuntime implements \deschdanja\TS\AOP\IPointcutDesignator{
      * e.g. when designator uses argument value
      * @return bool
      */
-    public function isRuntimeDesignator(){
+    final public function isRuntimeDesignator(){
         return true;
     }
 
