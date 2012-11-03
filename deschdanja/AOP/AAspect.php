@@ -1,13 +1,19 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 use deschdanja\AOP\Exceptions\OperationUnsupported;
 /**
- * Abstract Advice Class
- * Can be used as base for different advice types
+ * Abstract Aspect Class
+ * Can be used as base for different aspect types
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
-abstract class AAdvice implements IAspect{
+abstract class AAspect implements IAspect{
     protected $pointcuts = array();
     protected $type = NULL;
     //protected $possibleTypes = array();
@@ -15,7 +21,7 @@ abstract class AAdvice implements IAspect{
     //abstract protected function advice(IJoinPoint $joinpoint);
 
     /**
-     * add pointcut to advice
+     * add pointcut to aspect
      * @param IPointcut $pointcut
      */
     public function addPointcut(IPointcut $pointcut){
@@ -23,7 +29,7 @@ abstract class AAdvice implements IAspect{
     }
 
     /**
-     * returns type of advice
+     * returns type of aspect
      * @return string
      */
     public function getType(){
@@ -64,17 +70,17 @@ abstract class AAdvice implements IAspect{
     }
 
     /**
-     * function checks whether advice has any matching pointcuts
+     * function checks whether aspect has any matching pointcuts
      * if so, runs function advice
      * can proceed with execution of chain through advice chain
      */
-    public function runAspect(IJoinPoint $joinpoint, IAdviceChain $adviceChain){
+    public function runAspect(IJoinPoint $joinpoint, IAspectChain $aspectChain){
         throw new OperationUnsupported("method is not implemented");
     }
 
     /**
      * set type of advice (used by adviceChain)
-     * e.g. "around", "before", "after"
+     * e.g. "around", "before", "afterthrowing", "after"
      * @param string $type
      */
     public function setType($type){

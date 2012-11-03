@@ -1,11 +1,17 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP\Designators;
 use \deschdanja\AOP\IJoinPoint;
 
 /**
- * Description of ClassName
+ * Designator to match a regex against a fully qualified classname.
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 class ClassName extends ADesignatorNonRuntime{
     /**
@@ -20,14 +26,15 @@ class ClassName extends ADesignatorNonRuntime{
         }
         return false;
     }
-
+    
     /**
-     * matches aop-class against joinpoint
-     * @param IJoinPoint $joinpoint
-     * @return bool;
+     * Expression has to be regex to be matched
+     * against the fully qualified classname
+     * @param string $expression
      */
-    public function matchJoinPoint(IJoinPoint $joinpoint){
-        return $this->matchClassname($joinpoint->getClassName());
+    public function setPointcutExpression($expression) {
+        $expression = trim(strval($expression));
+        parent::setPointcutExpression($expression);
     }
 }
 ?>

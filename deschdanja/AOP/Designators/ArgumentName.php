@@ -1,11 +1,18 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP\Designators;
 use \deschdanja\AOP\IJoinPoint;
 
 /**
- * Designator to match an argument name!
+ * Designator to match an argument name
+ * by a regex expression
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 class ArgumentName extends ADesignatorRuntime{
     /**
@@ -20,6 +27,15 @@ class ArgumentName extends ADesignatorRuntime{
             }
         }
         return false;
+    }
+    
+    /**
+     * Expression has to be a regex to match against an argument name
+     * @param string $expression
+     */
+    public function setPointcutExpression($expression) {
+        $expression = trim(strval($expression));
+        parent::setPointcutExpression($expression);
     }
 }
 ?>

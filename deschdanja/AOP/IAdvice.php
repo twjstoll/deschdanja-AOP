@@ -1,9 +1,16 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 
 /**
- *
- * @author Theodor
+ * an Advice represents added behaviour
+ * 
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 interface IAdvice extends IAOPMatch{
     /**
@@ -20,7 +27,7 @@ interface IAdvice extends IAOPMatch{
 
     /**
      * set type of advice (used by adviceChain)
-     * e.g. "around", "before", "after"
+     * e.g. "around", "before", "afterthrowing", "after"
      * @param string $type
      */
     public function setType($type);

@@ -1,15 +1,21 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 use deschdanja\AOP\Exceptions\InvalidArgument;
 
 /**
- * AdviceNonAround can be either of type before or type after
+ * AspectNonAround can be of type before, afterthrowing or after
  * it is able to do all kinds of stuff,
- * but is not able to prevent further proceding
+ * but is not able to prevent further proceeding af the advicechain
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
-class AdviceNonAround extends AAdvice{
+class AspectNonAround extends AAspect{
     /**
      * additional behaviour, executed when a pointcut matches
      * @param IJoinPoint $joinpoint
@@ -26,7 +32,7 @@ class AdviceNonAround extends AAdvice{
      * @param IJoinPoint $joinpoint
      * @param IAdviceChain $aspectChain
      */
-    public function runAspect(IJoinPoint $joinpoint, IAdviceChain$aspectChain){
+    final public function runAspect(IJoinPoint $joinpoint, IAspectChain $aspectChain){
         if($this->matchJoinPoint($joinpoint)){
             $this->advice($joinpoint);
         }

@@ -1,12 +1,18 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP\Designators;
 use \deschdanja\AOP\IJoinPoint;
 
 
 /**
- * Description of ArgumentValue
+ * Designator to match an argument value
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 class ArgumentValue extends ADesignatorRuntime{
     
@@ -23,13 +29,7 @@ class ArgumentValue extends ADesignatorRuntime{
         }
         return false;
     }
-
-    /**
-     * expression is not forced to string, since value will be compared
-     * @param mixed $expression
-     */
-    public function setPointcutExpression($expression){
-        $this->expression = $expression;
-    }
+    
+    
 }
 ?>

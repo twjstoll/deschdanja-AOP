@@ -1,3 +1,5 @@
 Repository: twjstoll/deschdanja-AOP
+License: see file LICENSE in the root of this repository for information
 
-Component allows AOP-like behaviour
+Description:
+Component allows AOP-like behaviour in PHP

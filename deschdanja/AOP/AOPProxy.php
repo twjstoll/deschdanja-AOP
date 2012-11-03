@@ -1,4 +1,9 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
 
 namespace deschdanja\AOP;
 
@@ -7,7 +12,7 @@ use deschdanja\AOP\Exceptions\InvalidArgument;
 /**
  * Description of AOPProxy
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 class AOPProxy implements IAOPProxy {
 

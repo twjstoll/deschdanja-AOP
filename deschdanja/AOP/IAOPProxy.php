@@ -1,9 +1,15 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 
 /**
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 interface IAOPProxy {
     /*
@@ -28,6 +34,6 @@ interface IAOPProxy {
      * the adviceChain set prior, maybe containing aspects, will be replaced!
      * @param IAdviceChain $AdviceChain
      */
-    public function setAdviceChainOfAOPProxy(IAdviceChain $AdviceChain);
+    public function setAdviceChainOfAOPProxy(IAspectChain $aspectChain);
 }
 ?>

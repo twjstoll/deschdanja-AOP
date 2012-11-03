@@ -1,14 +1,20 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 
 /**
- * interface defines method to match aop-class against
- * classname or joinpoint
- * @author Theodor
+ * interface defines methods to match aop-object against a class by
+ * classname or a joinpoint
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 interface IAOPMatch {
     /**
-     * returns whether aop-object matches classname
+     * returns whether aop-object matches a class defined by classname
      * can throw exception, depending on implementation
      * e.g. runtime-designators should throw exception because they cannot match class only
      *

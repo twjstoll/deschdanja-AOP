@@ -1,4 +1,10 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP\Designators;
 use deschdanja\AOP\IJoinPoint;
 use deschdanja\AOP\APointcutDesignator;
@@ -7,7 +13,7 @@ use deschdanja\AOP\Exceptions\OperationUnsupported;
 /**
  * Abstract Class for a Runtime designator
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 abstract class ADesignatorRuntime extends APointcutDesignator{
 
@@ -16,12 +22,10 @@ abstract class ADesignatorRuntime extends APointcutDesignator{
     }
 
     /**
-     * returns wheter aop-object matches classname
-     * can throw exception, depending on implementation
-     * e.g. runtime-designators should throw exception because they cannot match class only
+     * Runtime Designator will throw an exception upon calling this method
      *
+     * @throws Operation Unsupported
      * @param string $classname fully qualified classname
-     * @return bool
      */
     final public function matchClassname($classname){
         throw new OperationUnsupported("Runtime Designators cannot match Classname");
@@ -45,13 +49,5 @@ abstract class ADesignatorRuntime extends APointcutDesignator{
         return true;
     }
 
-    /**
-     * sets pointcutExpression
-     * expression is used as regex to match joinpoint
-     * @param string $expression
-     */
-    public function setPointcutExpression($expression){
-        $this->expression = \strval($expression);
-    }
 }
 ?>

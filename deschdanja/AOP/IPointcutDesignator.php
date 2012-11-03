@@ -1,9 +1,22 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 
 /**
- *
- * @author Theodor
+ * Interface for a PointcutDesignator
+ * PointcutDesignator represents one criteria that is part of a pointcut
+ * e.g.:
+ * target class has to be in my\personal\namespace
+ * target class has to implement my\personal\interface
+ * method name called has to start with 'get'
+ * value of parameter has to be true
+ *  
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 interface IPointcutDesignator extends IAOPMatch{
     /**
@@ -15,8 +28,13 @@ interface IPointcutDesignator extends IAOPMatch{
 
     /**
      * sets pointcutExpression
-     * expression is used as regex to match joinpoint
-     * @param string $expression
+     * expression is used to match joinpoint or class
+     * depending on the designator this may be:
+     * a simple value
+     * regex
+     * ...
+     * 
+     * @param mixed $expression
      */
     public function setPointcutExpression($expression);
     

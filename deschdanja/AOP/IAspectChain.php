@@ -1,11 +1,21 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 
 /**
+ * Interface for an AspectChain
  * 
- * @author Theodor Stoll
+ * An AspectChain can contain several Aspects
+ * When executing the chain these are run in a distinct order
+ * 
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
-interface IAdviceChain {
+interface IAspectChain {
     /**
      * add aspect to chain
      * @param IAspect $aspect
@@ -14,6 +24,12 @@ interface IAdviceChain {
 
     /**
      * start execuction of chain
+     * 
+     * all added aspects will be run in this distinct order:
+     * - around aspects
+     * - before aspects
+     * - afterthrowing aspects
+     * - after aspects
      * @param IJoinPoint $joinpoint
      */
     public function executeChain(IJoinPoint $joinpoint);

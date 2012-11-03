@@ -1,14 +1,31 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 use deschdanja\AOP\Exceptions\InvalidArgument;
 use deschdanja\AOP\Exceptions\OperationNotAllowed;
 /**
- * AdviceChain holds all different IAspects
+ * AspectChain holds all different IAspects
  * and can run them against a IJoinpoint
  *
- * @author Theodor Stoll
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
-class AdviceChain implements IAdviceChain{
+class AspectChain implements IAspectChain{
+    
+    /**
+     * defines all possible aspect types
+     * @var array 
+     */
+    private $possibleAspectTypes = array(
+        "around",
+        "before",
+        "afterthrowing",
+        "after");
+    
     /**
      * @var array containing IAspect 
      */
@@ -38,6 +55,12 @@ class AdviceChain implements IAdviceChain{
     protected $before = array();
     
     /**
+     * Array with all afterthrowing aspects
+     * @var array
+     */
+    protected $afterthrowing = array();
+    
+    /**
      * Array with all after aspects
      * @var array 
      */
@@ -57,7 +80,7 @@ class AdviceChain implements IAdviceChain{
      */
     public function addAspect(IAspect $aspect){
         $type = $aspect->getType();
-        if($type != "around" && $type != "before" && $type != "after"){
+        if(!in_array($type, $this->possibleAspectTypes)){
             throw new InvalidArgument("type '$type' of aspect not supported");
         }
         $this->{$type}[]=$aspect;
@@ -77,7 +100,12 @@ class AdviceChain implements IAdviceChain{
         //set joinpoint
         $this->joinpoint = $joinpoint;
         //
-        $this->chain = \array_merge($this->around, $this->before, array($joinpoint), $this->after);
+        $this->chain = \array_merge(
+                $this->around,
+                $this->before,
+                array($joinpoint),
+                $this->afterthrowing,
+                $this->after);
 
         //start execution of chain
         $this->proceed();

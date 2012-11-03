@@ -1,14 +1,20 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 
 /**
- * contract for a joinpoint
- * provides access to target, to be called method and its arguments
- * it extends IAspectBase and can therefore be used in a IAspectChain
+ * interface for a joinpoint
+ * provides access to target, to be called method, its arguments and return value
+ * it extends IAspectBase and can therefore be used in an IAspectChain
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
-interface IJoinPoint extends IApectBase{
+interface IJoinPoint extends IAspectBase{
     /**
      * will throw exception, if joinpoint already has exception!
      *
@@ -20,12 +26,14 @@ interface IJoinPoint extends IApectBase{
 
     /**
      * returns fully qualified classname of target
+     * @return string
      */
     public function getClassName();
 
     /**
      * returns set exception
      * will throw exception if none is set
+     * @return \Exception
      */
     public function getException();
 
@@ -36,8 +44,8 @@ interface IJoinPoint extends IApectBase{
     public function getInterfaces();
 
     /**
-     * returns argument with given name
-     * will throw exception if none given
+     * returns argument value with given name
+     * will throw exception if method does not exist
      * @param string $name
      * @return mixed
      */
@@ -57,11 +65,12 @@ interface IJoinPoint extends IApectBase{
 
     /**
      * returns the return Value
+     * @return mixed
      */
     public function getReturnValue();
 
     /**
-     * will return a reference to the target instance
+     * will return the target instance
      * @return object
      */
     public function getTargetInstance();
@@ -82,6 +91,7 @@ interface IJoinPoint extends IApectBase{
     /**
      * returns the result of the Joinpoint
      * can be normal return or, if set, throw of an exception
+     * @return mixed
      */
     public function returnReturnValue();
 

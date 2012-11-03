@@ -1,11 +1,17 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 use deschdanja\AOP\Exceptions\OperationUnsupported;
 
 /**
- * Description of APointcutDesignator
+ * Base Class for a PointcutDesignator
  *
- * @author Theodor Stoll
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 abstract class APointcutDesignator implements IPointcutDesignator{
     /**
@@ -38,8 +44,8 @@ abstract class APointcutDesignator implements IPointcutDesignator{
      * @throws OperationUnsupported if runtime designator
      */
     public function matchClassname($classname){
-        if($this->runtimeDesignator){
-            throw new OperationUnsupported("designator uses Runtime elements and can therefore not match against Classname");
+        if($this->isRuntimeDesignator()){
+            throw new OperationUnsupported("designator uses runtime elements and can therefore not match against Classname");
         }
         return false;
     }
@@ -53,11 +59,16 @@ abstract class APointcutDesignator implements IPointcutDesignator{
 
     /**
      * sets pointcutExpression
-     * expression is used as regex to match joinpoint
-     * @param string $expression
+     * expression is used to match joinpoint or class
+     * depending on the designator this may be:
+     * a simple value
+     * regex
+     * ...
+     * 
+     * @param mixed $expression
      */
     public function setPointcutExpression($expression){
-        $this->expression = strval($expression);
+        $this->expression = $expression;
     }
 
 }

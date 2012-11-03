@@ -1,4 +1,9 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
 
 namespace deschdanja\AOP;
 use deschdanja\AOP\Exceptions\InvalidArgument;
@@ -7,7 +12,7 @@ use deschdanja\AOP\Exceptions\OperationUnsupported;
 /**
  * Description of JoinPoint
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 class JoinPoint implements IJoinPoint{
 
@@ -187,9 +192,9 @@ class JoinPoint implements IJoinPoint{
      * @param IJoinPoint $joinpoint
      * @param IAdviceChain $adviceChain
      */
-    public function runAspect(IJoinPoint $joinpoint, IAdviceChain $adviceChain) {
+    public function runAspect(IJoinPoint $joinpoint, IAspectChain $aspectChain) {
         $this->executeTarget();
-        $adviceChain->proceed();
+        $aspectChain->proceed();
     }
 
     /**

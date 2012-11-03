@@ -1,11 +1,17 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP\Designators;
 use deschdanja\AOP\IJoinPoint;
 
 /**
- * Description of InterfaceName
+ * Designator to match against a fully qualified interface name.
  *
- * @author Theodor
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 class InterfaceName extends ADesignatorNonRuntime{
     /**
@@ -27,12 +33,13 @@ class InterfaceName extends ADesignatorNonRuntime{
     }
 
     /**
-     * matches aop-class against joinpoint
-     * @param IJoinPoint $joinpoint
-     * @return bool;
+     * Expression has to be regex to be matched
+     * against the fully qualified interface name
+     * @param string $expression
      */
-    public function matchJoinPoint(IJoinPoint $joinpoint){
-        return $this->matchClassname($joinpoint->getClassName());
+    public function setPointcutExpression($expression) {
+        $expression = trim(strval($expression));
+        parent::setPointcutExpression($expression);
     }
 }
 ?>

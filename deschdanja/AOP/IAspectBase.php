@@ -1,9 +1,17 @@
 <?php
+/*
+ *  This File is part of the deschdanja-AOP project
+ *  See File LICENSE distributed with this package for
+ *  copyright information
+ */
+
 namespace deschdanja\AOP;
 
 /**
- * Interface for an Aspect
- * @author Theodor Stoll
+ * Interface the behaviour of an Aspect
+ * it provides a method to run added behaviour by an advice
+ * 
+ * @author Theodor Stoll <theodor@deschdanja.ch>
  */
 interface IAspectBase {
     /**
@@ -12,6 +20,6 @@ interface IAspectBase {
      * @param IJoinPoint $joinpoint
      * @param IAdviceChain $adviceChain
      */
-    public function runAspect(IJoinPoint $joinpoint, IAdviceChain $adviceChain);
+    public function runAspect(IJoinPoint $joinpoint, IAspectChain $aspectChain);
 }
 ?>
