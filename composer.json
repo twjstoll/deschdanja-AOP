@@ -1,6 +1,6 @@
 {
     "name": "deschdanja/deschdanja-a-o-p",
-    "description": "Description of project deschdanja-AOP.",
+    "description": "AOP like behaviour for PHP",
     "authors": [
         {
             "name": "Theodor Stoll",
@@ -11,7 +11,7 @@
         
     "autoload": {
         "psr-0": {
-            "deschdanja": "deschdanja/"
+            "deschdanja\AOP": ""
         }
     }
 
